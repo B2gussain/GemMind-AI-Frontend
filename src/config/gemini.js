@@ -3,6 +3,10 @@
  *
  * $ npm install @google/generative-ai
  */
+// At the top of your file
+
+
+
 import { 
   GoogleGenerativeAI ,
   HarmCategory,
@@ -14,7 +18,7 @@ import {
 //     HarmBlockThreshold,
 //   } = require("@google/generative-ai");
 
-  const apiKey =import.meta.API_KEY;
+const apiKey  = import.meta.env.VITE_API_KEY
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
