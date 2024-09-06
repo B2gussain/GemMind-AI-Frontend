@@ -13,8 +13,8 @@ import {
 //     HarmCategory,
 //     HarmBlockThreshold,
 //   } = require("@google/generative-ai");
-  
-  const apiKey ="AIzaSyC5bBjaowqCjl5D0mPkK4Lh8vRZ--kJUXU";
+
+  const apiKey =import.meta.API_KEY;
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
