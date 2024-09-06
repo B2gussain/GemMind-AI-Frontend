@@ -4,7 +4,6 @@
  * $ npm install @google/generative-ai
  */
 // At the top of your file
-console.log(import.meta.env.VITE_API_KEY)
 
 
 
