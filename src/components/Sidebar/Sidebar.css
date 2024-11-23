@@ -1,13 +1,21 @@
 img {
     width: 20px;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+}
+.messageimg{
+    filter: invert(0);
+    -webkit-filter: invert(0);
 }
 
 .sidebar {
     height: 100vh;
+    /* width: 10%; */
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
+    /* background-color: #f0f4f9; */
+    background-color: #282A2C;
     padding: 25px 10px;
 }
 
@@ -23,11 +31,16 @@ img {
     align-items: center;
     gap: 10px;
     padding: 10px 15px;
-    background-color: #e6eaf1;
+    /* background-color: #e6eaf1; */
+    background-color: #1E1F20;
     border-radius: 50px;
     font-size: 14px;
-    color: grey;
+    color: rgba(255, 255, 255, 0.712);;
     cursor: pointer;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 
 .sidebar .recent {
@@ -35,11 +48,15 @@ img {
     flex-direction: column;
     animation: fadeIn 1.5s;
     -webkit-animation: fadeIn 1.5s;
+    color:  rgba(255, 255, 255, 0.712);;
+
 }
 
 .sidebar .recent-title {
     margin-top: 30px;
     margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.712);;
+
 }
 
 .sidebar .recent-entry {
@@ -51,10 +68,14 @@ img {
     border-radius: 50px;
     color: #282828;
     cursor: pointer;
+    color: rgba(255, 255, 255, 0.712);
+
 }
 
 .sidebar .recent-entry:hover {
-    background-color: #e2e6eb;
+    /* background-color: #e2e6eb; */
+    background-color: #1E1F20;
+
 }
 
 .sidebar .bottom {

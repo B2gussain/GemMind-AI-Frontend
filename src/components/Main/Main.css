@@ -1,7 +1,11 @@
+.cardimg,.geminiimg{
+    filter: invert(0);
+    -webkit-filter: invert(0);
+}
 .main{
     flex: 1;
    height: 100vh;
-    /* background-color: #ff5546; */
+    background-color: #1E1F20;
     padding-bottom: 15vh;
     position:relative;
     /* overflow-x: hidden; */
@@ -22,6 +26,9 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+.nav>p{
+    color: white;
+}
 .main-container{
     /* background-color: #4b90ff; */
    max-width: 900px;
@@ -31,7 +38,7 @@
     margin: 15px 0px;
     font-size: 56px;
     color: #c4c7c5;
-padding:20px;
+    padding:20px;
 }
 .main .greet span{
     background: linear-gradient(16deg,#4b90ff,#ff5546);
@@ -51,7 +58,8 @@ padding:20px;
     height: 200px;
     width: 204px;
     padding: 15px;
-    background-color: #f0f4f9;
+    /* background-color: #f0f4f9; */
+    background-color: #282A2C;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -64,7 +72,8 @@ padding:20px;
     width:40px;
     padding: 5px;
     position: absolute;
-    background-color: white;
+    /* background-color: white; */
+    background-color: rgba(0, 0, 0, 0.315);
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -74,11 +83,13 @@ padding:20px;
     right: 10px;
 }
 .main .card p{
-    color: #585858;
+    /* color: #585858; */
+    color: #c4c7c5;
     font-size: 17px;
 }
 .card:hover{
-    background-color: #dfe4ea;
+    /* background-color: #dfe4ea; */
+    background-color: #141516;
 }
 .main-bottom{
     position: absolute;
@@ -93,7 +104,9 @@ padding:20px;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #f0f4f9;
+    /* background-color: #f0f4f9; */
+background-color: #282A2C;
+color: white;
     padding: 10px 20px;
     border-radius: 50px;
     -webkit-border-radius: 50px;
@@ -111,6 +124,7 @@ padding:20px;
     outline: none;
     padding: 8px;
     font-size: 18px;
+    color: white;
 }
 .search-box div{
     display: flex;
@@ -121,6 +135,7 @@ padding:20px;
     font-size: 13px;
     margin: 8px auto;
     text-align: center;
+    color: white;
 
 }
 .result{
@@ -136,7 +151,9 @@ padding:20px;
     display: flex;
     align-items: center;
     gap: 20px;
+    color: white;
 }
+
 .result img{
     width: 40px;
     border-radius: 50%;
@@ -149,6 +166,7 @@ padding:20px;
     display: flex;
     align-items: start;
     gap: 20px;
+    color: white;
 }
 .loader{
     width: 100%;
@@ -164,7 +182,8 @@ padding:20px;
     -o-border-radius: 4px;
     border: none;
     background-color: #f6f7f8;
-    background: linear-gradient(to right,#9ed7ff,#ffffff,#9ed7ff);
+    /* background-color: #ff5546; */
+    background: linear-gradient(to right,#42b0ff,#f4ff8d,#42b0ff);
     background-size: 800px 50px;
     height: 20px;
     animation: loader 3s infinite linear;

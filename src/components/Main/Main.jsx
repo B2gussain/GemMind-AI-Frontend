@@ -31,19 +31,19 @@ const Main = () => {
             <div className="cards">
               <div className="card">
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
-                <img src={assets.compass} alt="" />
+                <img className="cardimg" src={assets.compass} alt="" />
               </div>
               <div className="card">
                 <p>Briefly summarize this concept: urban planning</p>
-                <img src={assets.bulb} alt="" />
+                <img className="cardimg" src={assets.bulb} alt="" />
               </div>
               <div className="card">
                 <p>Brainstrom team bonding activities for our work retreat</p>
-                <img src={assets.message} alt="" />
+                <img className="cardimg" src={assets.message} alt="" />
               </div>
               <div className="card">
                 <p>Improve the readibility of the following code</p>
-                <img src={assets.code} alt="" />
+                <img className="cardimg" src={assets.code} alt="" />
               </div>
             </div>
           </>
@@ -54,7 +54,7 @@ const Main = () => {
               <p>{recentprompt}</p>
             </div>
             <div className="result-data">
-              <img src={assets.gemini} alt="" />
+              <img className="geminiimg" src={assets.gemini} alt="" />
               {loading ? (
                 <div className="loader">
                   <hr />
