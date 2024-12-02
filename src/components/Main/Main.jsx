@@ -1,7 +1,8 @@
+import React, { useContext, useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
-import { useContext } from "react";
 import { Context } from "../../context/Context";
+
 const Main = () => {
   const {
     onSent,
@@ -12,6 +13,43 @@ const Main = () => {
     setinput,
     input,
   } = useContext(Context);
+
+  const [isListening, setIsListening] = useState(false);
+
+  const handleMicClick = () => {
+    if (!("webkitSpeechRecognition" in window)) {
+      alert("Speech Recognition is not supported in your browser. Try Chrome.");
+      return;
+    }
+
+    const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US"; // Set the language for recognition
+    recognition.interimResults = false; // Only return final results
+    recognition.continuous = false; // Stop listening after a sentence
+
+    recognition.onstart = () => {
+      setIsListening(true);
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript; // Get the transcribed text
+      setinput((prev) => prev + " " + transcript); // Append it to the input field
+      setIsListening(false);
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech recognition error:", event.error);
+      setIsListening(false);
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.start(); // Start listening
+  };
 
   return (
     <div className="main">
@@ -24,11 +62,11 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>Hello,Dev.</span>
+                <span>Hello, Dev.</span>
               </p>
               <p>How can I help you today?</p>
             </div>
-            <div className="cards">
+            {/* <div className="cards">
               <div className="card">
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
                 <img className="cardimg" src={assets.compass} alt="" />
@@ -38,14 +76,14 @@ const Main = () => {
                 <img className="cardimg" src={assets.bulb} alt="" />
               </div>
               <div className="card">
-                <p>Brainstrom team bonding activities for our work retreat</p>
+                <p>Brainstorm team bonding activities for our work retreat</p>
                 <img className="cardimg" src={assets.message} alt="" />
               </div>
               <div className="card">
-                <p>Improve the readibility of the following code</p>
+                <p>Improve the readability of the following code</p>
                 <img className="cardimg" src={assets.code} alt="" />
               </div>
-            </div>
+            </div> */}
           </>
         ) : (
           <div className="result">
@@ -67,22 +105,25 @@ const Main = () => {
             </div>
           </div>
         )}
-
         <div className="main-bottom">
           <div className="search-box">
             <input
-              onChange={(e) => {
-                setinput(e.target.value);
-              }}
+              onChange={(e) => setinput(e.target.value)}
               value={input}
               type="text"
               placeholder="Enter a prompt here"
             />
             <div>
               <img src={assets.gallery} alt="" />
-              <img src={assets.mic} alt="" />
-             {input?<img onClick={() => onSent()} src={assets.send} alt="" />:null}
-              
+              <img
+                src={assets.mic}
+                alt="Mic"
+                className={isListening ? "listening" : ""}
+                onClick={handleMicClick}
+              />
+              {input ? (
+                <img onClick={() => onSent()} src={assets.send} alt="Send" />
+              ) : null}
             </div>
           </div>
           <p className="bottom-info">

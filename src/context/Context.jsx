@@ -1,6 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import run from "../config/gemini";
+
 export const Context = createContext();
+
 const ContextProvider = (props) => {
   const [input, setinput] = useState("");
   const [recentprompt, setrecentprompt] = useState("");
@@ -9,33 +11,42 @@ const ContextProvider = (props) => {
   const [loading, setloading] = useState(false);
   const [resultdata, setresultdata] = useState("");
 
-  const delaypara = (index, nextword) => {
-    setTimeout(function () {
-      setresultdata((prev) => prev + nextword);
-    }, 75 * index);
+  // Load previous prompts from local storage on app load
+  useEffect(() => {
+    const storedPrompts = JSON.parse(localStorage.getItem("prevprompt")) || [];
+    setprevprompt(storedPrompts);
+  }, []);
+
+  // Save updated prompts to local storage whenever prevprompt changes
+  useEffect(() => {
+    localStorage.setItem("prevprompt", JSON.stringify(prevprompt));
+  }, [prevprompt]);
+
+  const clearHistory = () => {
+    setprevprompt([]); // Clear the state
+    localStorage.removeItem("prevprompt"); // Remove from local storage
   };
-  const newchat=()=>{
-    setloading(false)
-    setshowresult(false)
 
-  }
-
+  const newchat = () => {
+    setloading(false);
+    setshowresult(false);
+  };
   const onSent = async (prompt) => {
     setresultdata("");
     setloading(true);
     setshowresult(true);
     let response;
+  
     if (prompt !== undefined) {
       response = await run(prompt);
       setrecentprompt(prompt);
+    } else {
+      setprevprompt((prev) => [input, ...prev]); // Add new prompt to the beginning of the array
+      setrecentprompt(input);
+      response = await run(input);
+      console.log(response);
     }
-    else{
-      setprevprompt((prev) => [...prev, input]);
-      setrecentprompt(input)
-      response=await run(input)
-      console.log(response)
-    }
-
+  
     let responseArray = response.split("**");
     let newResponse = "";
     for (let i = 0; i < responseArray.length; i++) {
@@ -54,6 +65,13 @@ const ContextProvider = (props) => {
     setloading(false);
     setinput("");
   };
+  
+
+  const delaypara = (index, nextword) => {
+    setTimeout(function () {
+      setresultdata((prev) => prev + nextword);
+    }, 75 * index);
+  };
 
   const contextValue = {
     prevprompt,
@@ -66,10 +84,13 @@ const ContextProvider = (props) => {
     resultdata,
     input,
     setinput,
-    newchat
+    newchat,
+    clearHistory, // Add clearHistory to the context
   };
+
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>
   );
 };
+
 export default ContextProvider;

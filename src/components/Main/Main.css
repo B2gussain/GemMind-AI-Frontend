@@ -3,6 +3,7 @@
     -webkit-filter: invert(0);
 }
 .main{
+
     flex: 1;
    height: 100vh;
     background-color: #1E1F20;
@@ -17,6 +18,7 @@
     font-size: 22px;
     padding: 20px;
     color: #585858;
+    padding-left: 90px;
 }
 .main .nav img{
     width: 40px;
@@ -201,6 +203,17 @@ color: white;
     font-size: 17px;
     font-weight: 300;
 }
+@media (max-width:1100px) {
+    .main .nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 22px;
+        padding: 20px;
+        color: #585858;
+        /* padding-left: 90px; */
+    }
+    }
 @media (max-width:971px) {
     .card{
         height: 180px;
