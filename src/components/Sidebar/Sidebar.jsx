@@ -56,12 +56,12 @@ const Sidebar = () => {
             className="clear-history"
             onClick={clearHistory} // Call clearHistory when clicked
           >
-            <img src={assets.question} alt="" />
+            <img src={assets.history} alt="" />
             {extended ? <p>Clear History</p> : null}
           </button>
         </div>
         <div className="bottom-item recent-entry">
-          <img src={assets.history} alt="" />
+          <img src={assets.question} alt="" />
           {extended ? <p>Activity</p> : null}
         </div>
         <div className="bottom-item recent-entry">
