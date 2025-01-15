@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { FaRobot, FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
+import dotenv from "dotenv"
+
 
 const Login = () => {
   const [form_change, setform_change] = useState(true);
@@ -26,7 +28,7 @@ const Login = () => {
     }
   };
 
-  const API_BASE_URL = "http://localhost:4000/auth";
+  const API_BASE_URL = `${import.meta.env.VITE_API_BACKEND}/auth`;
 
   // Handle Sign In
   const handle_signin = async (e) => {

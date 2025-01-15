@@ -12,7 +12,7 @@ const History = () => {
   useEffect(() => {
     const fetchPrompts = async () => {
       try {
-        const response = await fetch("http://localhost:4000/gemini/prompts", {
+        const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/gemini/prompts`, {
           method: "GET",
           headers: {
             Authorization: token, // Send token directly as it already includes 'Bearer'
@@ -44,7 +44,7 @@ const History = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/gemini/prompts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/gemini/prompts/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: token, // Send token directly as it already includes 'Bearer'

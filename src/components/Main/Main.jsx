@@ -90,7 +90,7 @@ const Main = () => {
       formData.append("profilePicture", image);
 
       const response = await axios.post(
-        "http://localhost:4000/profile/profile-picture",
+        `${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`,
         formData,
         {
           headers: {
@@ -121,7 +121,7 @@ const Main = () => {
         return;
       }
 
-      const response = await axios.delete("http://localhost:4000/profile/profile-picture", {
+      const response = await axios.delete(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
         headers: {
           Authorization: token,
         },
@@ -137,7 +137,7 @@ const Main = () => {
   };
   const fetchProfilePicture = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/profile/profile-picture", {
+      const response = await axios.get(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
         headers: {
           Authorization: token,
         },
@@ -170,7 +170,7 @@ const Main = () => {
     onSent();
     try {
       const response = await axios.post(
-        "http://localhost:4000/gemini",
+        `${import.meta.env.VITE_API_BACKEND}/gemini`,
         { prompt: input },
         {
           headers: {
