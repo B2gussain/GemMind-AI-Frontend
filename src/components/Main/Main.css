@@ -19,6 +19,7 @@
     align-items: center;
 }
 .dp_upload{
+    z-index: 99;
     transition: all 0.3s ease-in-out;
     height: 200px;
     width: 300px;

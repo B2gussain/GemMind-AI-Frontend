@@ -53,13 +53,15 @@ const Sidebar = () => {
   };
 
   const sidebar_collaps = () => {
-    setextended((prev) => {
-      const newExtendedState = !prev;
-      if (sidebar_ref.current) {
-        sidebar_ref.current.style.left = newExtendedState ? "-100%" : "0%";
-      }
-      return newExtendedState;
-    });
+    if(extended){
+      setextended(false)
+       sidebar_ref.current.style.left ="0%"
+    }
+    else{
+      setextended(true)
+      sidebar_ref.current.style.left ="-100%"
+
+    }
   };
 
   const handleLogout = () => {
