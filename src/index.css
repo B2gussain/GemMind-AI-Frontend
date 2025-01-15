@@ -21,7 +21,7 @@ font-family: Outfit;
     animation: fadeIn 1.5s;
     -webkit-animation: fadeIn 1.5s;
 }
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     0%{
         opacity: 0;
     }
@@ -29,4 +29,4 @@ font-family: Outfit;
         opacity: 1;
     }
     
-}
+} */

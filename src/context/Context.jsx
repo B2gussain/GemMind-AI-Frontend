@@ -10,7 +10,6 @@ const ContextProvider = (props) => {
   const [showresult, setshowresult] = useState(false);
   const [loading, setloading] = useState(false);
   const [resultdata, setresultdata] = useState("");
-
   // Load previous prompts from local storage on app load
   useEffect(() => {
     const storedPrompts = JSON.parse(localStorage.getItem("prevprompt")) || [];
@@ -70,7 +69,7 @@ const ContextProvider = (props) => {
   const delaypara = (index, nextword) => {
     setTimeout(function () {
       setresultdata((prev) => prev + nextword);
-    }, 75 * index);
+    }, 10 * index);
   };
 
   const contextValue = {
@@ -85,7 +84,8 @@ const ContextProvider = (props) => {
     input,
     setinput,
     newchat,
-    clearHistory, // Add clearHistory to the context
+    clearHistory,
+   // Add clearHistory to the context
   };
 
   return (
