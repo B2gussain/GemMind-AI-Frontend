@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar.jsx";
 import {assets}  from "../assets/assets.js";
 import { RxCross2 } from "react-icons/rx";
+import { FaRobot } from "react-icons/fa";
+
 const History = () => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -67,7 +69,12 @@ const History = () => {
   return (
     <div className="home history_page">
       <Sidebar />
-      <nav></nav>
+      <nav><p>
+              <span>
+                  <FaRobot className="nav-robot" />
+                </span>
+                GemMind
+              </p></nav>
       <h1>History</h1>
       <div className="lists">
         {prompts && prompts.length > 0 ? (

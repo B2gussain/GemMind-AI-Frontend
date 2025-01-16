@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaRobot, FaMicrophone, FaArrowUp, FaRegCopy } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 import { Navigate } from "react-router-dom";
 import "./Main.css";
 import { assets } from "../../assets/assets";

@@ -153,7 +153,25 @@
     nav{
         height: 60px;
         width: 100vw;
-        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        font-size: 22px;
+        padding: 8px;
+        color: #e4e1e1;
+        padding-left: 100px;
+        padding-right: 20px;
+        background-color: #000000;
+        p{
+            position: absolute;
+            right: 3%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            span{
+                padding-right: 10px;
+            }
+        }
     }
     h1{
         text-align: center;
