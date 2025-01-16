@@ -73,95 +73,95 @@ const Main = () => {
     }
   };
 
-  const handleProfile = async () => {
-    try {
-      if (!image) {
-        alert("No image selected.");
-        return;
-      }
+  // const handleProfile = async () => {
+  //   try {
+  //     if (!image) {
+  //       alert("No image selected.");
+  //       return;
+  //     }
 
-      if (!token) {
-        alert("User is not authenticated.");
-        return;
-      }
+  //     if (!token) {
+  //       alert("User is not authenticated.");
+  //       return;
+  //     }
 
-      console.log("Token before request:", token); // Debugging log
+  //     console.log("Token before request:", token); // Debugging log
 
-      const formData = new FormData();
-      formData.append("profilePicture", image);
+  //     const formData = new FormData();
+  //     formData.append("profilePicture", image);
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`,
-        formData,
-        {
-          headers: {
-            Authorization: token,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+  //     const response = await axios.post(
+  //       `${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`,
+  //       formData,
+  //       {
+  //         headers: {
+  //           Authorization: token,
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
 
-      console.log("Profile picture updated successfully:", response.data);
-      alert("Profile picture updated successfully.");
-      fetchProfilePicture()
-    } catch (err) {
-      console.error("Error submitting profile-pic:", err.response?.data || err.message || err);
-      if (err.response?.status === 401) {
-        alert("Invalid token. Please log in again.");
-        // Optional: Redirect to login
-      } else {
-        alert("Failed to submit profile-pic. Please try again.");
-      }
-    }
-  };
+  //     console.log("Profile picture updated successfully:", response.data);
+  //     alert("Profile picture updated successfully.");
+  //     fetchProfilePicture()
+  //   } catch (err) {
+  //     console.error("Error submitting profile-pic:", err.response?.data || err.message || err);
+  //     if (err.response?.status === 401) {
+  //       alert("Invalid token. Please log in again.");
+  //       // Optional: Redirect to login
+  //     } else {
+  //       alert("Failed to submit profile-pic. Please try again.");
+  //     }
+  //   }
+  // };
 
-  const handleProfileDelete = async () => {
-    try {
-      if (!token) {
-        alert("User is not authenticated.");
-        return;
-      }
+  // const handleProfileDelete = async () => {
+  //   try {
+  //     if (!token) {
+  //       alert("User is not authenticated.");
+  //       return;
+  //     }
 
-      const response = await axios.delete(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
-        headers: {
-          Authorization: token,
-        },
-      });
+  //     const response = await axios.delete(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
+  //       headers: {
+  //         Authorization: token,
+  //       },
+  //     });
 
-      console.log("Profile picture deleted successfully:", response.data);
-      alert("Profile picture deleted successfully.");
-      setProfilePicture(null); // Clear the profile picture preview in the UI
-    } catch (err) {
-      console.error("Error deleting profile picture:", err.response?.data || err.message || err);
-      alert("Failed to delete profile picture. Please try again.");
-    }
-  };
-  const fetchProfilePicture = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
-        headers: {
-          Authorization: token,
-        },
-        responseType: "blob", // To handle image data
-      });
+  //     console.log("Profile picture deleted successfully:", response.data);
+  //     alert("Profile picture deleted successfully.");
+  //     setProfilePicture(null); // Clear the profile picture preview in the UI
+  //   } catch (err) {
+  //     console.error("Error deleting profile picture:", err.response?.data || err.message || err);
+  //     alert("Failed to delete profile picture. Please try again.");
+  //   }
+  // };
+  // const fetchProfilePicture = async () => {
+  //   try {
+  //     const response = await axios.get(`${import.meta.env.VITE_API_BACKEND}/profile/profile-picture`, {
+  //       headers: {
+  //         Authorization: token,
+  //       },
+  //       responseType: "blob", // To handle image data
+  //     });
 
-      // Check if the response is a valid image blob
-      if (response.headers['content-type'].startsWith('image/')) {
-        const imageUrl = URL.createObjectURL(response.data);
-        setProfilePicture(imageUrl);
-      } else {
-        console.error("Received non-image data:", response.data);
-        alert("Failed to fetch profile picture.");
-      }
-    } catch (err) {
-      console.error("Error fetching profile picture:", err.response?.data || err.message || err);
-    }
-  };
-  useEffect(() => {
-    if (token) {
-      fetchProfilePicture();
-    }
-  }, [token]);
+  //     // Check if the response is a valid image blob
+  //     if (response.headers['content-type'].startsWith('image/')) {
+  //       const imageUrl = URL.createObjectURL(response.data);
+  //       setProfilePicture(imageUrl);
+  //     } else {
+  //       console.error("Received non-image data:", response.data);
+  //       alert("Failed to fetch profile picture.");
+  //     }
+  //   } catch (err) {
+  //     console.error("Error fetching profile picture:", err.response?.data || err.message || err);
+  //   }
+  // };
+  // useEffect(() => {
+  //   if (token) {
+  //     fetchProfilePicture();
+  //   }
+  // }, [token]);
 
   const handlePromptSubmission = async () => {
     if (!input.trim()) {
@@ -202,24 +202,24 @@ const Main = () => {
       });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        alert("File size should not exceed 5MB.");
-        return;
-      }
-      if (!file.type.startsWith("image/")) {
-        alert("Please select a valid image file.");
-        return;
-      }
-      setImage(file);
-    }
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     if (file.size > 5 * 1024 * 1024) {
+  //       alert("File size should not exceed 5MB.");
+  //       return;
+  //     }
+  //     if (!file.type.startsWith("image/")) {
+  //       alert("Please select a valid image file.");
+  //       return;
+  //     }
+  //     setImage(file);
+  //   }
+  // };
 
   return (<>
     {/* <div className="main"> */}
-      {dp_form && (
+      {/* {dp_form && (
         <div className="dp_upload">
           <RxCross2 className="cross" onClick={() => setdp_form((prev) => !prev)} />
           <label htmlFor="inputTag" className="dp_label">
@@ -245,15 +245,15 @@ const Main = () => {
             <button onClick={handleProfileDelete}>Delete</button>
           </div>
         </div>
-      )}
+      )} */}
       <div className="nav">
         <p>
-          GemMind
-          <span>
+        <span>
             <FaRobot className="nav-robot" />
           </span>
+          GemMind
         </p>
-        <div className="profile">
+        {/* <div className="profile">
           <div className="dp" onClick={() => setdp_form(prev => !prev)}>
             {profilePicture ? (
               <img src={profilePicture} className="profile-picture" />
@@ -262,7 +262,7 @@ const Main = () => {
             )}
           </div>
           {name}
-        </div>
+        </div> */}
       </div>
       <div className="main-container">
         {!showresult ? (
@@ -278,12 +278,12 @@ const Main = () => {
         ) : (
           <div className="result">
             <div className="result-title">
-              {/* <img src={assets.dp} alt="" /> */}
-              {profilePicture ? (
+              <img src={assets.dp} className="result-profile" alt="" />
+              {/* {profilePicture ? (
               <img src={profilePicture} className="result-profile" />
             ) : (
               <img src={assets.dp} alt="Default Profile" className="result-profile" />
-            )}
+            )} */}
               <p className="entered_prompt">{recentprompt}</p>
             </div>
             <div className="result-data">
