@@ -1,5 +1,5 @@
 import React, {  useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar.jsx";
 import {assets}  from "../assets/assets.js";
 import { RxCross2 } from "react-icons/rx";

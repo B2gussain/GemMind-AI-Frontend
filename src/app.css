@@ -167,6 +167,9 @@
         background-color: rgba(0, 0, 0, 0.438);
         overflow-y: scroll;
         color: #F0F8FF;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         &::-webkit-scrollbar
         {
             display:none;
@@ -215,6 +218,9 @@
                         }
 }
     }
+}
+.no-prompts{
+    text-align: center;
 }
 
 @media (max-width:730px) {
