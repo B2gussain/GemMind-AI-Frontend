@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { Navigate } from "react-router-dom";
 import "./Main.css";
 import { assets } from "../../assets/assets";
+// import Sidebar from "../Sidebar/Sidebar";
 import { Context } from "../../context/Context";
 import axios from "axios";
 
@@ -216,8 +217,8 @@ const Main = () => {
     }
   };
 
-  return (
-    <div className="main">
+  return (<>
+    {/* <div className="main"> */}
       {dp_form && (
         <div className="dp_upload">
           <RxCross2 className="cross" onClick={() => setdp_form((prev) => !prev)} />
@@ -245,7 +246,6 @@ const Main = () => {
           </div>
         </div>
       )}
-
       <div className="nav">
         <p>
           GemMind
@@ -338,8 +338,9 @@ const Main = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+
+    {/* </div> */}
+    </> );
 };
 
 export default Main;

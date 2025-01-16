@@ -141,6 +141,7 @@
 }
 /* home    css     */
 .home{
+    position: relative;
     height: 100vh;
     width: 100vw;
     background-image: url(./assets/background.jpg);

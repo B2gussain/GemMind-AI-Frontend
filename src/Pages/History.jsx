@@ -61,7 +61,7 @@ const History = () => {
     } catch (error) {
       console.error("Error deleting prompt:", error);
     }
-    fetchPrompts();
+    // fetchPrompts();
   };
 
   return (
