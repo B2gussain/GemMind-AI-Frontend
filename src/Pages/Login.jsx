@@ -3,6 +3,7 @@ import { FaRobot, FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 import dotenv from "dotenv"
+import Loader from "../components/Loader/Loader"
 
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
+  const [loader, setloader] = useState(false);
   const navigate = useNavigate(); // Initialize navigate function
 
   // Toggle between Login and Register forms
@@ -33,6 +34,7 @@ const Login = () => {
   // Handle Sign In
   const handle_signin = async (e) => {
     e.preventDefault();
+    setloader(true)
     try {
       const response = await axios.post(`${API_BASE_URL}/signin`, {
         email,
@@ -42,6 +44,7 @@ const Login = () => {
       localStorage.setItem("token", token); // Store JWT token
       localStorage.setItem("username", name); // Store username
       alert("Sign-in successful!");
+      setloader(false)
       navigate("/home"); // Navigate to Home page
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -51,12 +54,14 @@ const Login = () => {
         console.error("Sign-in error:", error.message);
         alert("An unexpected error occurred. Please try again.");
       }
+      setloader(false)
     }
   };
 
   // Handle Sign Up
   const handle_signup = async (e) => {
     e.preventDefault();
+    setloader(true)
     try {
       await axios.post(`${API_BASE_URL}/signup`, {
         name,
@@ -64,6 +69,7 @@ const Login = () => {
         password,
       });
       alert("Sign-up successful! You can now log in.");
+      setloader(false)
       form_type_toggle(); // Switch to sign-in form
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -72,12 +78,14 @@ const Login = () => {
         console.error("Sign-up error:", error.message);
         alert("An unexpected error occurred. Please try again.");
       }
+      setloader(false)
     }
   };
 
   return (
     <div className="login">
-      <div className="login-form-box">
+
+      {loader?<Loader/>: <div className="login-form-box">
         <h1><span><FaRobot /></span>GemMind</h1>
         <p>Experience AI-powered conversations.</p>
         {form_change ? (
@@ -148,7 +156,8 @@ const Login = () => {
             </p>
           </form>
         )}
-      </div>
+      </div>}
+     
     </div>
   );
 };
