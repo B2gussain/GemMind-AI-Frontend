@@ -96,6 +96,7 @@ const Login = () => {
               onChange={(e) => setemail(e.target.value)}
               className="input"
               placeholder="Enter Email"
+              required
             />
             <div className="password-block">
               <input
@@ -105,6 +106,7 @@ const Login = () => {
                 onChange={(e) => setpassword(e.target.value)}
                 className="password-input"
                 placeholder="Enter Password"
+                required
               />
               {eye_change ? (
                 <FaRegEye className="eye" onClick={eye_toggle} />
@@ -126,6 +128,7 @@ const Login = () => {
               onChange={(e) => setname(e.target.value)}
               className="input"
               placeholder="Enter Name"
+              required
             />
             <input
               type="email"
@@ -133,6 +136,7 @@ const Login = () => {
               onChange={(e) => setemail(e.target.value)}
               className="input"
               placeholder="Enter Email"
+              required
             />
             <div className="password-block">
               <input
@@ -142,6 +146,7 @@ const Login = () => {
                 onChange={(e) => setpassword(e.target.value)}
                 className="password-input"
                 placeholder="Enter Password"
+                required
               />
               {eye_change ? (
                 <FaRegEye className="eye" onClick={eye_toggle} />
